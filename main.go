@@ -3,8 +3,10 @@ package main
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"regexp"
 	"strconv"
 	"time"
@@ -57,5 +59,10 @@ func main() {
 		}
 	})
 
-	log.Fatal(http.ListenAndServe(":6000", nil))
+	port, err := strconv.ParseInt(os.Getenv("PORT"), 10, 32)
+	if err != nil {
+		port = 6000
+	}
+
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
