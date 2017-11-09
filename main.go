@@ -34,11 +34,7 @@ func convert(input string) (time.Time, error) {
 
 	var unixTime = regexp.MustCompile(`^[0-9]+$`)
 	if unixTime.MatchString(input) {
-		unix, err := strconv.ParseInt(input, 10, 64)
-		if err != nil {
-			return time.Time{}, err
-		}
-
+		unix, _ := strconv.ParseInt(input, 10, 64)
 		return time.Unix(unix, 0), nil
 	}
 

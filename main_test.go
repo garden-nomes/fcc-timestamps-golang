@@ -13,6 +13,8 @@ func TestConvert(t *testing.T) {
 	}{
 		{"123456789", time.Unix(123456789, 0), false},
 		{"January 2, 2006", time.Date(2006, time.January, 2, 0, 0, 0, 0, time.UTC), false},
+		{"October 10, 2017", time.Date(2017, time.October, 10, 0, 0, 0, 0, time.UTC), false},
+		{"asdf", time.Time{}, true},
 		{"", time.Time{}, true},
 	}
 
